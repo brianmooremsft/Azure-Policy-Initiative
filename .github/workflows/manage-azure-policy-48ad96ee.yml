@@ -1,0 +1,86 @@
+name: manage-azure-policy-48ad96ee
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/Configure_backup_on_virtual_machines_without_a_given_tag_to_an_existing_recovery_services_vault_in_the_same_location_09ce66bc-1220-4153-8104-e3f51c936913/**'
+#      - 'policies/Key_vaults_should_have_purge_protection_enabled_0b60c0b2-2dc2-4e1c-b5c9-abbed971de53/**'
+#      - 'policies/Azure_Defender_for_Key_Vault_should_be_enabled_0e6763cc-5078-4e64-889d-ff4d9a839047/**'
+#      - 'policies/_Preview_Recovery_Services_vaults_should_use_private_link_11e3da8c-1d68-4392-badd-0ff3c43ab5b0/**'
+#      - 'policies/_Preview_Azure_Data_Factory_linked_services_should_use_Key_Vault_for_storing_secrets_127ef6d7-242f-43b3-9eef-947faf1725d0/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_should_disable_public_network_access_19ea9d63-adee-4431-a95e-1913c6c1c75f/**'
+#      - 'policies/Key_vaults_should_have_soft_delete_enabled_1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d/**'
+#      - 'policies/Configure_Azure_Defender_for_Key_Vaults_to_be_enabled_1f725891-01c0-420a-9059-4fa46cb770b7/**'
+#      - 'policies/_Preview_Azure_Recovery_Services_vaults_should_use_customer-managed_keys_for_encrypting_backup_data_2e94d99a-8a36-4563-bc77-810d8893b671/**'
+#      - 'policies/Configure_backup_on_virtual_machines_with_a_given_tag_to_an_existing_recovery_services_vault_in_the_same_location_345fa903-145c-4fe1-8bcd-93ec2adccde8/**'
+#      - 'policies/Azure_Key_Vault_should_disable_public_network_access_405c5871-3e91-4644-8a63-58e19d68ff5b/**'
+#      - 'policies/Configure_Kubernetes_clusters_with_Flux_v2_configuration_using_Bucket_source_and_secrets_in_KeyVault_5174c1db-ca42-e0d4-b320-4f1cf6a1fa93/**'
+#      - 'policies/Azure_Key_Vault_should_have_firewall_enabled_55615ac9-af46-4a59-874e-391cc3dfb490/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_should_use_private_link_59fee2f4-d439-4f1b-9b9a-982e1474bfd8/**'
+#      - 'policies/_Preview_Private_endpoint_should_be_configured_for_Key_Vault_5f0bc445-3935-4915-9981-011aa2b46147/**'
+#      - 'policies/_Preview_Configure_Recovery_Services_vaults_to_use_private_endpoints_for_backup_8015d6ed-3641-4534-8d0b-5c67b67ff7de/**'
+#      - 'policies/_Preview_Configure_backup_for_blobs_on_storage_accounts_with_a_given_tag_to_an_existing_backup_vault_in_the_same_region_615b01c4-d565-4f6f-8c6e-d130268e3a1a/**'
+#      - 'policies/Configure_backup_on_virtual_machines_with_a_given_tag_to_a_new_recovery_services_vault_with_a_default_policy_83644c87-93dd-49fe-bf9f-6aff8fd0834e/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_to_disable_public_network_access_84d327c3-164a-4685-b453-900478614456/**'
+#      - 'policies/_Preview_Configure_Azure_Recovery_Services_vaults_to_use_private_DNS_zones_942bd215-1a66-44be-af65-6a1c0318dbe2/**'
+#      - 'policies/Deploy_-_Configure_diagnostic_settings_for_Azure_Key_Vault_to_Log_Analytics_workspace_951af2fa-529b-416e-ab6e-066fd85ac459/**'
+#      - 'policies/_Preview_Configure_blob_backup_for_all_storage_accounts_that_do_not_contain_a_given_tag_to_a_backup_vault_in_the_same_region_958dbd4e-0e20-4385-a082-d3f20c2a6ad8/**'
+#      - 'policies/Configure_backup_on_virtual_machines_without_a_given_tag_to_a_new_recovery_services_vault_with_a_default_policy_98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vaults_with_private_endpoints_9d4fad1f-5189-4a42-b29e-cf7929c6b6df/**'
+#      - 'policies/Resource_logs_in_Azure_Key_Vault_Managed_HSM_should_be_enabled_a2a5b911-5617-447e-a49e-59dbe0e0434b/**'
+#      - 'policies/_Preview_Azure_Key_Vaults_should_use_private_link_a6abeaec-4d90-4a02-805f-6b26c4d3fbe9/**'
+#      - 'policies/Deploy_-_Configure_diagnostic_settings_to_an_Event_Hub_to_be_enabled_on_Azure_Key_Vault_Managed_HSM_a6d2c800-5230-4a40-bff3-8268b4987d42/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vaults_to_use_private_DNS_zones_ac673a9a-f77d-4846-b2d8-a57f8e1c01d4/**'
+#      - .github/workflows/manage-azure-policy-48ad96ee.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_48ad96ee}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Configure_backup_on_virtual_machines_without_a_given_tag_to_an_existing_recovery_services_vault_in_the_same_location_09ce66bc-1220-4153-8104-e3f51c936913/**
+          policies/Key_vaults_should_have_purge_protection_enabled_0b60c0b2-2dc2-4e1c-b5c9-abbed971de53/**
+          policies/Azure_Defender_for_Key_Vault_should_be_enabled_0e6763cc-5078-4e64-889d-ff4d9a839047/**
+          policies/_Preview_Recovery_Services_vaults_should_use_private_link_11e3da8c-1d68-4392-badd-0ff3c43ab5b0/**
+          policies/_Preview_Azure_Data_Factory_linked_services_should_use_Key_Vault_for_storing_secrets_127ef6d7-242f-43b3-9eef-947faf1725d0/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_should_disable_public_network_access_19ea9d63-adee-4431-a95e-1913c6c1c75f/**
+          policies/Key_vaults_should_have_soft_delete_enabled_1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d/**
+          policies/Configure_Azure_Defender_for_Key_Vaults_to_be_enabled_1f725891-01c0-420a-9059-4fa46cb770b7/**
+          policies/_Preview_Azure_Recovery_Services_vaults_should_use_customer-managed_keys_for_encrypting_backup_data_2e94d99a-8a36-4563-bc77-810d8893b671/**
+          policies/Configure_backup_on_virtual_machines_with_a_given_tag_to_an_existing_recovery_services_vault_in_the_same_location_345fa903-145c-4fe1-8bcd-93ec2adccde8/**
+          policies/Azure_Key_Vault_should_disable_public_network_access_405c5871-3e91-4644-8a63-58e19d68ff5b/**
+          policies/Configure_Kubernetes_clusters_with_Flux_v2_configuration_using_Bucket_source_and_secrets_in_KeyVault_5174c1db-ca42-e0d4-b320-4f1cf6a1fa93/**
+          policies/Azure_Key_Vault_should_have_firewall_enabled_55615ac9-af46-4a59-874e-391cc3dfb490/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_should_use_private_link_59fee2f4-d439-4f1b-9b9a-982e1474bfd8/**
+          policies/_Preview_Private_endpoint_should_be_configured_for_Key_Vault_5f0bc445-3935-4915-9981-011aa2b46147/**
+          policies/_Preview_Configure_Recovery_Services_vaults_to_use_private_endpoints_for_backup_8015d6ed-3641-4534-8d0b-5c67b67ff7de/**
+          policies/_Preview_Configure_backup_for_blobs_on_storage_accounts_with_a_given_tag_to_an_existing_backup_vault_in_the_same_region_615b01c4-d565-4f6f-8c6e-d130268e3a1a/**
+          policies/Configure_backup_on_virtual_machines_with_a_given_tag_to_a_new_recovery_services_vault_with_a_default_policy_83644c87-93dd-49fe-bf9f-6aff8fd0834e/**
+          policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_to_disable_public_network_access_84d327c3-164a-4685-b453-900478614456/**
+          policies/_Preview_Configure_Azure_Recovery_Services_vaults_to_use_private_DNS_zones_942bd215-1a66-44be-af65-6a1c0318dbe2/**
+          policies/Deploy_-_Configure_diagnostic_settings_for_Azure_Key_Vault_to_Log_Analytics_workspace_951af2fa-529b-416e-ab6e-066fd85ac459/**
+          policies/_Preview_Configure_blob_backup_for_all_storage_accounts_that_do_not_contain_a_given_tag_to_a_backup_vault_in_the_same_region_958dbd4e-0e20-4385-a082-d3f20c2a6ad8/**
+          policies/Configure_backup_on_virtual_machines_without_a_given_tag_to_a_new_recovery_services_vault_with_a_default_policy_98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86/**
+          policies/_Preview_Configure_Azure_Key_Vaults_with_private_endpoints_9d4fad1f-5189-4a42-b29e-cf7929c6b6df/**
+          policies/Resource_logs_in_Azure_Key_Vault_Managed_HSM_should_be_enabled_a2a5b911-5617-447e-a49e-59dbe0e0434b/**
+          policies/_Preview_Azure_Key_Vaults_should_use_private_link_a6abeaec-4d90-4a02-805f-6b26c4d3fbe9/**
+          policies/Deploy_-_Configure_diagnostic_settings_to_an_Event_Hub_to_be_enabled_on_Azure_Key_Vault_Managed_HSM_a6d2c800-5230-4a40-bff3-8268b4987d42/**
+          policies/_Preview_Configure_Azure_Key_Vaults_to_use_private_DNS_zones_ac673a9a-f77d-4846-b2d8-a57f8e1c01d4/**
