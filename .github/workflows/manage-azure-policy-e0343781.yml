@@ -1,0 +1,80 @@
+name: manage-azure-policy-e0343781
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/Key_vaults_should_have_purge_protection_enabled_0b60c0b2-2dc2-4e1c-b5c9-abbed971de53/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_should_disable_public_network_access_19ea9d63-adee-4431-a95e-1913c6c1c75f/**'
+#      - 'policies/Key_vaults_should_have_soft_delete_enabled_1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d/**'
+#      - 'policies/Azure_Key_Vault_should_disable_public_network_access_405c5871-3e91-4644-8a63-58e19d68ff5b/**'
+#      - 'policies/Azure_Key_Vault_should_have_firewall_enabled_55615ac9-af46-4a59-874e-391cc3dfb490/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_should_use_private_link_59fee2f4-d439-4f1b-9b9a-982e1474bfd8/**'
+#      - 'policies/_Preview_Private_endpoint_should_be_configured_for_Key_Vault_5f0bc445-3935-4915-9981-011aa2b46147/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_to_disable_public_network_access_84d327c3-164a-4685-b453-900478614456/**'
+#      - 'policies/Deploy_-_Configure_diagnostic_settings_for_Azure_Key_Vault_to_Log_Analytics_workspace_951af2fa-529b-416e-ab6e-066fd85ac459/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vaults_with_private_endpoints_9d4fad1f-5189-4a42-b29e-cf7929c6b6df/**'
+#      - 'policies/Resource_logs_in_Azure_Key_Vault_Managed_HSM_should_be_enabled_a2a5b911-5617-447e-a49e-59dbe0e0434b/**'
+#      - 'policies/_Preview_Azure_Key_Vaults_should_use_private_link_a6abeaec-4d90-4a02-805f-6b26c4d3fbe9/**'
+#      - 'policies/Deploy_-_Configure_diagnostic_settings_to_an_Event_Hub_to_be_enabled_on_Azure_Key_Vault_Managed_HSM_a6d2c800-5230-4a40-bff3-8268b4987d42/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vaults_to_use_private_DNS_zones_ac673a9a-f77d-4846-b2d8-a57f8e1c01d4/**'
+#      - 'policies/Azure_Key_Vault_Managed_HSM_should_have_purge_protection_enabled_c39ba22d-4428-4149-b981-70acb31fc383/**'
+#      - 'policies/Resource_logs_in_Key_Vault_should_be_enabled_cf820ca0-f99e-4f3e-84fb-66e913812d21/**'
+#      - 'policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_with_private_endpoints_d1d6d8bb-cc7c-420f-8c7d-6f6f5279a844/**'
+#      - 'policies/Deploy_Diagnostic_Settings_for_Key_Vault_to_Event_Hub_ed7c8c13-51e7-49d1-8a43-8490431a0da2/**'
+#      - 'policies/Configure_key_vaults_to_enable_firewall_ac673a9a-f77d-4846-b2d8-a57f8e1c01dc/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_using_elliptic_curve_cryptography_should_have_the_specified_curve_names_e58fd0c1-feac-4d12-92db-0a7e9421f53e/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_Keys_should_have_more_than_the_specified_number_of_days_before_expiration_ad27588c-0198-4c84-81ef-08efd0274653/**'
+#      - 'policies/Key_Vault_secrets_should_have_an_expiration_date_98728c90-32c7-4049-8429-847dc0f4fe37/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_should_have_an_expiration_date_1d478a74-21ba-4b9f-9d8f-8e6fced0eec5/**'
+#      - 'policies/Key_Vault_keys_should_have_an_expiration_date_152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0/**'
+#      - 'policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_using_RSA_cryptography_should_have_a_specified_minimum_key_size_86810a98-8e91-4a44-8386-ec66d0de5d57/**'
+#      - .github/workflows/manage-azure-policy-e0343781.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_e0343781}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Key_vaults_should_have_purge_protection_enabled_0b60c0b2-2dc2-4e1c-b5c9-abbed971de53/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_should_disable_public_network_access_19ea9d63-adee-4431-a95e-1913c6c1c75f/**
+          policies/Key_vaults_should_have_soft_delete_enabled_1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d/**
+          policies/Azure_Key_Vault_should_disable_public_network_access_405c5871-3e91-4644-8a63-58e19d68ff5b/**
+          policies/Azure_Key_Vault_should_have_firewall_enabled_55615ac9-af46-4a59-874e-391cc3dfb490/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_should_use_private_link_59fee2f4-d439-4f1b-9b9a-982e1474bfd8/**
+          policies/_Preview_Private_endpoint_should_be_configured_for_Key_Vault_5f0bc445-3935-4915-9981-011aa2b46147/**
+          policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_to_disable_public_network_access_84d327c3-164a-4685-b453-900478614456/**
+          policies/Deploy_-_Configure_diagnostic_settings_for_Azure_Key_Vault_to_Log_Analytics_workspace_951af2fa-529b-416e-ab6e-066fd85ac459/**
+          policies/_Preview_Configure_Azure_Key_Vaults_with_private_endpoints_9d4fad1f-5189-4a42-b29e-cf7929c6b6df/**
+          policies/Resource_logs_in_Azure_Key_Vault_Managed_HSM_should_be_enabled_a2a5b911-5617-447e-a49e-59dbe0e0434b/**
+          policies/_Preview_Azure_Key_Vaults_should_use_private_link_a6abeaec-4d90-4a02-805f-6b26c4d3fbe9/**
+          policies/Deploy_-_Configure_diagnostic_settings_to_an_Event_Hub_to_be_enabled_on_Azure_Key_Vault_Managed_HSM_a6d2c800-5230-4a40-bff3-8268b4987d42/**
+          policies/_Preview_Configure_Azure_Key_Vaults_to_use_private_DNS_zones_ac673a9a-f77d-4846-b2d8-a57f8e1c01d4/**
+          policies/Azure_Key_Vault_Managed_HSM_should_have_purge_protection_enabled_c39ba22d-4428-4149-b981-70acb31fc383/**
+          policies/Resource_logs_in_Key_Vault_should_be_enabled_cf820ca0-f99e-4f3e-84fb-66e913812d21/**
+          policies/_Preview_Configure_Azure_Key_Vault_Managed_HSM_with_private_endpoints_d1d6d8bb-cc7c-420f-8c7d-6f6f5279a844/**
+          policies/Deploy_Diagnostic_Settings_for_Key_Vault_to_Event_Hub_ed7c8c13-51e7-49d1-8a43-8490431a0da2/**
+          policies/Configure_key_vaults_to_enable_firewall_ac673a9a-f77d-4846-b2d8-a57f8e1c01dc/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_using_elliptic_curve_cryptography_should_have_the_specified_curve_names_e58fd0c1-feac-4d12-92db-0a7e9421f53e/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_Keys_should_have_more_than_the_specified_number_of_days_before_expiration_ad27588c-0198-4c84-81ef-08efd0274653/**
+          policies/Key_Vault_secrets_should_have_an_expiration_date_98728c90-32c7-4049-8429-847dc0f4fe37/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_should_have_an_expiration_date_1d478a74-21ba-4b9f-9d8f-8e6fced0eec5/**
+          policies/Key_Vault_keys_should_have_an_expiration_date_152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0/**
+          policies/_Preview_Azure_Key_Vault_Managed_HSM_keys_using_RSA_cryptography_should_have_a_specified_minimum_key_size_86810a98-8e91-4a44-8386-ec66d0de5d57/**
