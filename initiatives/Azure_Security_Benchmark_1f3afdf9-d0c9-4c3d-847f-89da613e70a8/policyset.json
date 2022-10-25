@@ -2083,7 +2083,7 @@
      "AuditIfNotExists",
      "Disabled"
     ],
-    "defaultValue": "AuditIfNotExists"
+    "defaultValue": "Disabled"
    },
    "sqlServersAdvancedDataSecurityMonitoringEffect": {
     "type": "String",
