@@ -1,0 +1,51 @@
+{
+ "properties": {
+  "displayName": "Non Prod Monitoring Initiative",
+  "policyType": "Custom",
+  "metadata": {
+   "category": "Monitoring",
+   "parameterScopes": {
+    "logAnalytics : Configure Azure Activity logs to stream to specified Log Analytics workspace_1": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+    "logAnalytics : Deploy Diagnostic Settings for Key Vault to Log Analytics workspace_1": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a"
+   },
+   "createdBy": "32a89650-bcb2-47a0-91dd-db7689e31e38",
+   "createdOn": "2022-11-01T21:48:14.0027443Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "ManagementLogAnalyticsWorkspace": {
+    "type": "string",
+    "metadata": {
+     "displayName": "Log Analytics Workspace for Management"
+    }
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Configure Azure Activity logs to stream to specified Log Analytics workspace_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2465583e-4e78-4c15-b6be-a36cbc7c8b0f",
+    "parameters": {
+     "logAnalytics": {
+      "value": "[parameters('ManagementLogAnalyticsWorkspace')]"
+     }
+    },
+    "groupNames": []
+   },
+   {
+    "policyDefinitionReferenceId": "Deploy Diagnostic Settings for Key Vault to Log Analytics workspace_1",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47",
+    "parameters": {
+     "logAnalytics": {
+      "value": "[parameters('ManagementLogAnalyticsWorkspace')]"
+     }
+    },
+    "groupNames": []
+   }
+  ],
+  "policyDefinitionGroups": []
+ },
+ "id": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policySetDefinitions/31785464bc574a9998396be0",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "31785464bc574a9998396be0"
+}
