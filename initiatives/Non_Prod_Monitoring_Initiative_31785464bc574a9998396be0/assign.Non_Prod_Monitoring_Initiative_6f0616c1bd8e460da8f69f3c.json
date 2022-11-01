@@ -1,0 +1,35 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "identity": {
+  "principalId": "e0e2af5d-ae7c-46c1-9265-fc567a0ddb0b",
+  "tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3",
+  "type": "SystemAssigned"
+ },
+ "properties": {
+  "displayName": "Non Prod Monitoring Initiative",
+  "policyDefinitionId": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policySetDefinitions/31785464bc574a9998396be0",
+  "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+  "notScopes": [],
+  "parameters": {
+   "ManagementLogAnalyticsWorkspace": {
+    "value": "loganalyticstest"
+   }
+  },
+  "metadata": {
+   "assignedBy": "Brian Moore",
+   "parameterScopes": {},
+   "createdBy": "32a89650-bcb2-47a0-91dd-db7689e31e38",
+   "createdOn": "2022-11-01T22:20:49.5272192Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policyAssignments/6f0616c1bd8e460da8f69f3c",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "6f0616c1bd8e460da8f69f3c",
+ "location": "eastus"
+}
