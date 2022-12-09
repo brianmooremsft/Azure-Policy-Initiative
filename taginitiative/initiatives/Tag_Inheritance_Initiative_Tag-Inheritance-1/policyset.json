@@ -1,0 +1,48 @@
+{
+ "properties": {
+  "displayName": "Tag Inheritance Initiative",
+  "policyType": "Custom",
+  "description": "This initiative contains the policies necessary to inherit tags from subscriptions and resource groups.",
+  "metadata": {
+   "version": "1.0.0",
+   "category": "Org Governance",
+   "createdBy": "38fdcff3-7387-41e2-8517-dea0eb1043a3",
+   "createdOn": "2022-12-09T05:13:20.9572681Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "tagName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Tag Name",
+     "description": "Name of the tag, such as 'environment'"
+    },
+    "defaultValue": ""
+   }
+  },
+  "policyDefinitions": [
+   {
+    "policyDefinitionReferenceId": "Resources Inherit Tags from Resource Group with Exclusions",
+    "policyDefinitionId": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policyDefinitions/resources-inherit-rg-tag-dynamic-notscope",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('tagName')]"
+     }
+    }
+   },
+   {
+    "policyDefinitionReferenceId": "Resources Groups Inherit Tags from Subscription with Exclusions",
+    "policyDefinitionId": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policyDefinitions/resources-inherit-sub-tag-dynamic-notscope",
+    "parameters": {
+     "tagName": {
+      "value": "[parameters('tagName')]"
+     }
+    }
+   }
+  ]
+ },
+ "id": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policySetDefinitions/Tag-Inheritance-1",
+ "type": "Microsoft.Authorization/policySetDefinitions",
+ "name": "Tag-Inheritance-1"
+}

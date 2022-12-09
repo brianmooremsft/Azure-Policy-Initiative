@@ -1,0 +1,40 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "identity": {
+  "principalId": "d49c5590-bacf-4d3a-ab18-1bcfb74f1084",
+  "tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3",
+  "type": "SystemAssigned"
+ },
+ "properties": {
+  "displayName": "Inherit Tag env from subs and rgs",
+  "policyDefinitionId": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policySetDefinitions/Tag-Inheritance-1",
+  "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+  "parameters": {
+   "tagName": {
+    "value": "env"
+   }
+  },
+  "description": "envModify Tag to comply with governance goal of enforcing Tags by inheriting Tags from RG - ",
+  "metadata": {
+   "roles": [
+    {
+     "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+     "roleDisplayName": "Contributor",
+     "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+    }
+   ],
+   "createdBy": "38fdcff3-7387-41e2-8517-dea0eb1043a3",
+   "createdOn": "2022-12-09T05:13:38.551235Z",
+   "updatedBy": "38fdcff3-7387-41e2-8517-dea0eb1043a3",
+   "updatedOn": "2022-12-09T05:27:35.8424337Z"
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policyAssignments/envtaginh-",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "envtaginh-",
+ "location": "eastus2"
+}
