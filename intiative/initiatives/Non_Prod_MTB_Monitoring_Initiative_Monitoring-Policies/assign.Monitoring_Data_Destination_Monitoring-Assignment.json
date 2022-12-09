@@ -1,0 +1,68 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "identity": {
+  "principalId": "a1a06ce2-4c9e-4361-8832-9975c705f393",
+  "tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3",
+  "type": "SystemAssigned"
+ },
+ "properties": {
+  "displayName": "Monitoring Data Destination",
+  "policyDefinitionId": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policySetDefinitions/Monitoring-Policies",
+  "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+  "notScopes": [],
+  "parameters": {
+   "managementLogAnalyticsWorkspace": {
+    "value": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/resourcegroups/lawrg/providers/microsoft.operationalinsights/workspaces/loganalyticstest"
+   },
+   "nsgRegion": {
+    "value": "eastus2"
+   },
+   "storageId": {
+    "value": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/resourcegroups/lawRg/providers/Microsoft.Storage/storageAccounts/nsgflowlogsablm8001"
+   },
+   "networkWatcherRG": {
+    "value": "networkwatcherrg"
+   },
+   "networkWatcherName": {
+    "value": "NetworkWatcher_eastus2"
+   }
+  },
+  "description": "Sets the destination Log Anlaytics Workspace for diagnostics data ",
+  "metadata": {
+   "roles": [
+    {
+     "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+     "roleDisplayName": "Monitoring Contributor",
+     "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+    },
+    {
+     "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+     "roleDisplayName": "Contributor",
+     "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+    },
+    {
+     "scope": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+     "roleDisplayName": "Log Analytics Contributor",
+     "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+    }
+   ],
+   "createdBy": "38fdcff3-7387-41e2-8517-dea0eb1043a3",
+   "createdOn": "2022-12-09T05:25:50.7985696Z",
+   "updatedBy": "32a89650-bcb2-47a0-91dd-db7689e31e38",
+   "updatedOn": "2022-12-09T05:57:49.213652Z",
+   "parameterScopes": {
+    "managementLogAnalyticsWorkspace": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/resourcegroups/lawrg",
+    "nsgRegion": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a",
+    "networkWatcherRG": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a"
+   }
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/501b9bfd-98f9-4c31-af58-cd753197912a/providers/Microsoft.Authorization/policyAssignments/Monitoring-Assignment",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "Monitoring-Assignment",
+ "location": "eastus2"
+}
